@@ -36,9 +36,7 @@ I have used more or less the same functions provided in the tutorial to extract 
 <p align="center">
   <img src="./ims_for_writeup/car_hog.png" alt="car_hog_img">
   <br>HoG features extracted from cars
-</p>
 
-<p align="center">
   <img src="./ims_for_writeup/non_car.png" alt="non_car_img">
   <br>Some training images for non-car
 </p>
