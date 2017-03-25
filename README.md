@@ -47,8 +47,15 @@ I have used more or less the same functions provided in the tutorial to extract 
 In the function *train_svm()* in [`HoG_SVM_SlidingWindow.py`](HoG_SVM_SlidingWindow.py), I extract all the features from training images and use StandardScaler from sklearn.preprocessing to scale the training vectors.
 
 #### 3. Test on Indivitual images
-The following figure shows result on two test images.
+The following figure shows result on two test images.  The blue boxes show the windows detected by sliding window scan at different scales.  The red boxes show the consolidated detections from heat map.  At the left top, number of cars and thumnail of the heat map are shown.  In the second figure we can see that two boxes are detected on the white car.  Since we have training images of the back and side views of the cars exclussively such detections will occur.  With YUV color space I obtained very less number of false positives.  But the number of true positives on the car regions was also very less.  Hence, I used a very low threshold (threshold = 2) on the votes needed in the heatmap for consolidated boxes.
 <p align="center">
   <img src="./ims_for_writeup/thumb.png" alt="thumbnail">
   Result on two of the test images
 </p>
+
+#### 4. Video output
+
+The video output is available in file [`project_video_out_yuv_linear.mp4`](project_video_out_yuv_linear.mp4)
+
+### Discussion
+My program takes nearly .5 seconds for each frame.  From the video output we can see that if the car is in the adjacent lane and not too far from the camera it gets detected reliably.  As it moves away the detections are either missing or unstable.  I tried scaling up the image, but detections did not improve.  When I analyzed the sub-windows of the scaled up image, I observed that the standard 64 by 64 size window does not tightly fit the car at any position as in the training image.  Perhaps adding minor scale changes in the training image may stabilize the results.  But for images with such variations linear SVM may not be suitable.  Deep Learning with multi-box detectors like [here](https://github.com/ndrplz/self-driving-car/tree/master/project_5_vehicle_detection) has been proved to be useful.  I verified its result.  But could not contribute anything to it.  Hence did not include that part.
