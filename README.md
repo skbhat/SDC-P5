@@ -22,4 +22,34 @@ There are 3 python script files
 
 Using [`process_video.py`](process_video.py), we can perform the above detection on all frames of a video.  It has a function *process_video_frame()* which is invoked on each frame.  A variable *consecutive_appearance* sets the number of frames in which a box need to appear consecutively in order to be consistent.  This is used to remove fals positives.  If at least 50% of a consolidated box in the current frame is found out to be +ve in those previous frames, it is declared as consistent and plotted in the final output video.
 
-Finally, [`define_parameter_dict.py`](define_parameter_dict.py) is the file in which parameters are set for global usage (i.e. in the other two scripts).  The first 15 lines of this file defines all the input and learning parameters.  You can specify the training dataset location, the input video for [`process_video.py`](process_video.py) etc.  One can choose the color space, svm kernel, scales at which slinding window search need to be performed etc.  For YUV color space, and linear svm kernel, the trained SVM will be stored in [`svm_yuv_linear.pickle`](svm_yuv_linear.pickle).  Once trained, the same file will be used (no re-training), for that combination of parameters.  For retraining, please delete this output file.  I have used YUV color space and SVM kernel.
+Finally, [`define_parameter_dict.py`](define_parameter_dict.py) is the file in which parameters are set for global usage (i.e. in the other two scripts).  The first 15 lines of this file defines all the input and learning parameters.  You can specify the training dataset location, the input video for [`process_video.py`](process_video.py) etc.  One can choose the color space, svm kernel, scales at which slinding window search need to be performed etc.  For YUV color space, and linear svm kernel, the trained SVM will be stored in [`svm_yuv_linear.pickle`](svm_yuv_linear.pickle).  Once trained, the same file will be used (no re-training), for that combination of parameters.  For retraining, please delete this output file.  I have used YUV color space and SVM kernel.  The out put video file is [`project_video_out_yuv_linear.mp4`](project_video_out_yuv_linear.mp4).
+
+## Rubric Points
+#### 1.Features
+I have used more or less the same functions provided in the tutorial to extract HoG, Color Histogram and raw pixel info ( *get_hog_features()*, *color_hist()* and *bin_spatial()* in [`HoG_SVM_SlidingWindow.py`](HoG_SVM_SlidingWindow.py) respectively).  Initially I used only HoG features.  But added the other two increased the validation accuracy of the SVM during training.  There was not much increase in computational cost for the SVM with linear kernel. Hence I decided to retain all the features suggested in the lessons.
+
+<p align="center">
+  <img src="./ims_for_writeup/car.png" alt="car_img">
+  <br>Some training images for car
+</p>
+
+<p align="center">
+  <img src="./ims_for_writeup/car_hog.png" alt="car_hog_img">
+  <br>HoG features extracted from cars
+</p>
+
+<p align="center">
+  <img src="./ims_for_writeup/non_car.png" alt="non_car_img">
+  <br>Some training images for non-car
+</p>
+
+<p align="center">
+  <img src="./ims_for_writeup/non_car_hog.png" alt="non_car_hog_img">
+  <br>HoG features extracted from non-cars
+</p>
+
+
+#### 2. Training
+In the function *train_svm()* in [`HoG_SVM_SlidingWindow.py`](HoG_SVM_SlidingWindow.py), I extract all the features from training images and use StandardScaler from sklearn.preprocessing to scale the training vectors.
+
+#### 3. 
