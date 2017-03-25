@@ -30,18 +30,14 @@ I have used more or less the same functions provided in the tutorial to extract 
 
 <p align="center">
   <img src="./ims_for_writeup/car.png" alt="car_img">
-  <br>Some training images for car
-</p>
+  Some training images for car
 
-<p align="center">
   <img src="./ims_for_writeup/car_hog.png" alt="car_hog_img">
   <br>HoG features extracted from cars
 
   <img src="./ims_for_writeup/non_car.png" alt="non_car_img">
   <br>Some training images for non-car
-</p>
 
-<p align="center">
   <img src="./ims_for_writeup/non_car_hog.png" alt="non_car_hog_img">
   <br>HoG features extracted from non-cars
 </p>
