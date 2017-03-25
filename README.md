@@ -46,4 +46,9 @@ I have used more or less the same functions provided in the tutorial to extract 
 #### 2. Training
 In the function *train_svm()* in [`HoG_SVM_SlidingWindow.py`](HoG_SVM_SlidingWindow.py), I extract all the features from training images and use StandardScaler from sklearn.preprocessing to scale the training vectors.
 
-#### 3. 
+#### 3. Test on Indivitual images
+The following figure shows result on two test images.
+<p align="center">
+  <img src="./ims_for_writeup/thumb.png" alt="thumbnail">
+  Result on two of the test images
+</p>
