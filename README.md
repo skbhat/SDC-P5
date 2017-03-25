@@ -16,4 +16,6 @@ Each frame of the video is passed through the test stage.  An additional conditi
 There are 3 python script files
 1. [`HoG_SVM_SlidingWindow.py`](HoG_SVM_SlidingWindow.py)
 2. [`process_video.py`](process_video.py)
-3. ['define_parameter_dict.py'](define_parameter_dict.py)
+3. [`define_parameter_dict.py`](define_parameter_dict.py)
+
+Contains the portion needed for feature selection, training and running the sliding window search on the images provided in [`test_images`](test_images)
